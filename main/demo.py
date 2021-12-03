@@ -1,4 +1,6 @@
 
+
+
 import os
 import sys
 import argparse
@@ -12,7 +14,7 @@ from tools.counter import get_counts
 from models.network import get_repnet_model
 from config import config as cfg
 # from models.network import ResnetPeriodEstimator
-
+np.set_printoptions(threshold=np.inf)
 
 def parser_upate():
     parser = argparse.ArgumentParser(description='RepNet.')
@@ -49,7 +51,7 @@ if __name__=="__main__":
     print('Running RepNet...') 
     model.summary()
 
-    pred_period, pred_score, within_period,per_frame_counts, chosen_stride = get_counts(
+    pred_period, pred_score, within_period,per_frame_counts, chosen_stride,aff_matrixs = get_counts(
         model,
         imgs,
         strides=[1,2,3,4],
@@ -60,9 +62,13 @@ if __name__=="__main__":
         median_filter=cfg.MEDIAN_FILTER,
         fully_periodic=cfg.FULLY_PERIODIC)
 
-    print('Visualizing results...') 
-    viz_reps(imgs, per_frame_counts, pred_score, interval=1000/cfg.VIZ_FPS,
-         plot_score=cfg.PLOT_SCORE)
+
+    # save into file 
+    # np.savetxt('../data/aff_matrix.txt',)
+    np.save('../data/aff_matrix.npy',aff_matrixs)
+    # print('Visualizing results...') 
+    # viz_reps(imgs, per_frame_counts, pred_score, interval=1000/cfg.VIZ_FPS,
+    #      plot_score=cfg.PLOT_SCORE)
     
         
 

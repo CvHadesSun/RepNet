@@ -152,10 +152,12 @@ class ResnetPeriodEstimator(tf.keras.models.Model):
     x = tf.reduce_max(x, [2, 3])
 
     # Reshape and prepare embs for output.
-    final_embs = x
+    
 
     # Get self-similarity matrix.
     x = get_sims(x, self.temperature)
+
+    final_embs = x
 
     # 3x3 conv layer on self-similarity matrix.
     x = self.conv_3x3_layer(x)
@@ -217,6 +219,10 @@ def get_repnet_model(logdir):
   # tf.function for speed.
   model.call = tf.function(model.call)
 
+  # print layer name of model
+  # for layer in model.layers:
+  #   print(layer.name)
+
   # Define checkpoint and checkpoint manager.
   ckpt = tf.train.Checkpoint(model=model)
   ckpt_manager = tf.train.CheckpointManager(
@@ -230,4 +236,8 @@ def get_repnet_model(logdir):
 
   # Pass dummy frames to build graph.
   model(tf.random.uniform((1, 64, 112, 112, 3)))
+  # for v in model.variables:
+    # print(v.name)
+    # print('-'*50)
+    # print(v)
   return model
