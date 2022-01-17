@@ -4,13 +4,13 @@ This repo is not offical implementation, re-arranging source code from repnet co
 
 
 
-![test](http://r3djjuz2m.hn-bkt.clouddn.com/img/test.gif)
+![test](assets/output.gif)
 
-![output](http://r3djjuz2m.hn-bkt.clouddn.com/img/output.gif)
+
 
 ## NETWORK
 
-![image-20211202150949026](http://r3djjuz2m.hn-bkt.clouddn.com/img/image-20211202150949026.png)
+![image-20211202150949026](assets/image-20220117191327821.png)
 
 ### Checkpoint
 
