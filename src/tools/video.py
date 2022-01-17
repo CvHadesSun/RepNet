@@ -165,6 +165,7 @@ def show_video(video_path):
 def viz_reps(frames,
              count,
              score,
+             output,
              alpha=1.0,
              pichart=True,
              colormap=plt.cm.PuBu,
@@ -176,8 +177,11 @@ def viz_reps(frames,
     counts = len(frames) * [count/len(frames)]
   else:
     counts = count
+
+  
   sum_counts = np.cumsum(counts)
-  tmp_path = '../data/output.mp4'
+  # tmp_path = '../data/output.mp4'
+  tmp_path=output
   fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(5, 5),
                          tight_layout=True,)
 

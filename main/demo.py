@@ -1,6 +1,5 @@
 
 
-
 import os
 import sys
 import argparse
@@ -65,10 +64,11 @@ if __name__=="__main__":
 
     # save into file 
     # np.savetxt('../data/aff_matrix.txt',)
-    np.save('../data/aff_matrix.npy',aff_matrixs)
-    # print('Visualizing results...') 
-    # viz_reps(imgs, per_frame_counts, pred_score, interval=1000/cfg.VIZ_FPS,
-    #      plot_score=cfg.PLOT_SCORE)
+    # np.save('../data/aff_matrix.npy',aff_matrixs)
+    print('Visualizing results...') 
+    
+    viz_reps(imgs, per_frame_counts, pred_score,args.output ,interval=1000/cfg.VIZ_FPS,
+         plot_score=cfg.PLOT_SCORE)
     
         
 
